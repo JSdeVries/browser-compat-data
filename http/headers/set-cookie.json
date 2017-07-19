@@ -1,60 +1,58 @@
 {
-  "version": "1.0.0",
   "data": {
     "http": {
       "headers": {
         "Set-Cookie": {
           "__compat": {
-            "basic_support": {
-              "support": {
-                "webview_android": {
-                  "version_added": true
-                },
-                "chrome": {
-                  "version_added": true
-                },
-                "chrome_android": {
-                  "version_added": true
-                },
-                "edge": {
-                  "version_added": true
-                },
-                "edge_mobile": {
-                  "version_added": true
-                },
-                "firefox": {
-                  "version_added": true
-                },
-                "firefox_android": {
-                  "version_added": true
-                },
-                "ie": {
-                  "version_added": true
-                },
-                "ie_mobile": {
-                  "version_added": true
-                },
-                "opera": {
-                  "version_added": true
-                },
-                "opera_android": {
-                  "version_added": true
-                },
-                "safari": {
-                  "version_added": true
-                },
-                "safari_ios": {
-                  "version_added": true
-                }
+            "support": {
+              "webview_android": {
+                "version_added": true
               },
-              "status": {
-                "experimental": false,
-                "standard_track": true,
-                "deprecated": false
+              "chrome": {
+                "version_added": true
+              },
+              "chrome_android": {
+                "version_added": true
+              },
+              "edge": {
+                "version_added": true
+              },
+              "edge_mobile": {
+                "version_added": true
+              },
+              "firefox": {
+                "version_added": true
+              },
+              "firefox_android": {
+                "version_added": true
+              },
+              "ie": {
+                "version_added": true
+              },
+              "ie_mobile": {
+                "version_added": true
+              },
+              "opera": {
+                "version_added": true
+              },
+              "opera_android": {
+                "version_added": true
+              },
+              "safari": {
+                "version_added": true
+              },
+              "safari_ios": {
+                "version_added": true
               }
             },
-            "Max-Age": {
-              "desc": "<code>Max-Age</code>",
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          },
+          "Max-Age": {
+            "__compat": {
               "support": {
                 "webview_android": {
                   "version_added": true
@@ -101,9 +99,10 @@
                 "standard_track": true,
                 "deprecated": false
               }
-            },
-            "HttpOnly": {
-              "desc": "<code>HttpOnly</code>",
+            }
+          },
+          "HttpOnly": {
+            "__compat": {
               "support": {
                 "webview_android": {
                   "version_added": null
@@ -150,9 +149,11 @@
                 "standard_track": true,
                 "deprecated": false
               }
-            },
-            "cookie_prefixes": {
-              "desc": "Cookie prefixes",
+            }
+          },
+          "cookie_prefixes": {
+            "__compat": {
+              "description": "Cookie prefixes",
               "support": {
                 "webview_android": {
                   "version_added": null
@@ -199,9 +200,10 @@
                 "standard_track": true,
                 "deprecated": false
               }
-            },
-            "SameSite": {
-              "desc": "<code>SameSite</code>",
+            }
+          },
+          "SameSite": {
+            "__compat": {
               "support": {
                 "webview_android": {
                   "version_added": "51"
