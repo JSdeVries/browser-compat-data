@@ -29,6 +29,7 @@
   },
   "scripts": {
     "lint": "node test/lint",
+    "render": "node test/render",
     "travis": "npm test",
     "test": "npm run lint"
   }
