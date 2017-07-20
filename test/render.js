@@ -13,7 +13,7 @@ var query = process.argv[2];
 var depth = process.argv[3] || 1;
 var output = '';
 
-var s_no_data_found = `No compatibility data found. Please contribute data for "${query}" to the <a href="https://github.com/mdn/browser-compat-data">MDN compatibility data repository</a>.`;
+var s_no_data_found = `No compatibility data found. Please contribute data for "${query}" (depth: ${depth}) to the <a href="https://github.com/mdn/browser-compat-data">MDN compatibility data repository</a>.`;
 var s_firefox_android = 'Firefox for Android';
 var s_chrome_android = 'Chrome for Android';
 
@@ -324,19 +324,15 @@ function getData(queryString, obj) {
 Get features that should be displayed according to the query and the depth setting
 Flatten them into a features array
 */
-function traverseFeatures(obj, depth) {
+function traverseFeatures(obj, depth, identifier) {
   depth--;
   if (depth >= 0) {
     for (i in obj) {
       if (!!obj[i] && typeof(obj[i])=="object" && i !== '__compat') {
         if (obj[i].__compat) {
-          features.push({[i]: obj[i].__compat});
-        } else {
-          for (let feature of Object.keys(obj[i])) {
-            features.push({[i + '.' + feature]: obj[i][feature].__compat})
-          }
+          features.push({[identifier + '.' + i]: obj[i].__compat});
         }
-        traverseFeatures(obj[i], depth);
+        traverseFeatures(obj[i], depth, identifier + '.' + i);
       }
     }
   }
@@ -349,11 +345,11 @@ var identifier = query.split(".").pop();
 if (!compatData) {
   output = s_no_data_found;
 } else if (compatData.__compat) {
-  // get the main feature identifier and add it to the feature list
+  // get an optional main feature identifier and add it to the feature list
   features.push({[identifier]: compatData.__compat});
 }
 
-traverseFeatures(compatData, depth);
+traverseFeatures(compatData, depth, identifier);
 
 if (features.length > 0) {
   output = `<div class="htab">
@@ -370,6 +366,8 @@ if (features.length > 0) {
   output += writeTable('desktop', desktopBrowsers);
   output += writeTable('mobile', mobileBrowsers);
   output += writeNotes();
+} else {
+  output = s_no_data_found;
 }
 
 console.log(output);
