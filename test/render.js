@@ -329,7 +329,13 @@ function traverseFeatures(obj, depth) {
   if (depth >= 0) {
     for (i in obj) {
       if (!!obj[i] && typeof(obj[i])=="object" && i !== '__compat') {
-        features.push({[i]: obj[i].__compat});
+        if (obj[i].__compat) {
+          features.push({[i]: obj[i].__compat});
+        } else {
+          for (let feature of Object.keys(obj[i])) {
+            features.push({[i + '.' + feature]: obj[i][feature].__compat})
+          }
+        }
         traverseFeatures(obj[i], depth);
       }
     }
@@ -338,12 +344,13 @@ function traverseFeatures(obj, depth) {
 
 var compatData = getData(query, bcd.data);
 var features = [];
+var identifier = query.split(".").pop();
 
 if (!compatData) {
   output = s_no_data_found;
 } else if (compatData.__compat) {
   // get the main feature identifier and add it to the feature list
-  features.push({[query.split(".").pop()]: compatData.__compat});
+  features.push({[identifier]: compatData.__compat});
 }
 
 traverseFeatures(compatData, depth);
