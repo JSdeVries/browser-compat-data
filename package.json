@@ -30,6 +30,7 @@
   "scripts": {
     "lint": "node test/lint",
     "render": "node test/render",
+    "convert": "node test/convert",
     "travis": "npm test",
     "test": "npm run lint"
   }
